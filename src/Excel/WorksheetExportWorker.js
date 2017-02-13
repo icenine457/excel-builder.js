@@ -3,13 +3,11 @@
 "use strict";
 var requireConfig;
 var worksheet;
+var Worksheet = require('./Worksheet')
 var start = function(data) {
-    require(['Worksheet'], function(Worksheet) {
-        worksheet = new Worksheet();
-        worksheet.importData(data);
-        postMessage({status: 'sharedStrings', data: worksheet.collectSharedStrings()});
-        
-    });
+    worksheet = new Worksheet();
+    worksheet.importData(data);
+    postMessage({status: 'sharedStrings', data: worksheet.collectSharedStrings()});
 };
 
 var onmessage = function(event) {
